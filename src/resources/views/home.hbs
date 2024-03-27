@@ -1,0 +1,70 @@
+<form method="post">
+    <div class="form-group">
+        <label for="msv">msv</label>
+        <input type="text" class="form-control" id="msv" name="msv">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Ten</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">phone</label>
+        <input type="text" class="form-control" id="phone" name="phone">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Dia chi</label>
+        <input type="text" class="form-control" id="address" name="address">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<hr>
+<form action="" method="get">
+    <div class="form-group">
+        <input type="text" class="form-control-inline" name="msv">
+        <button class="btn btn-success">Search</button>
+    </div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Msv</th>
+      <th scope="col">Ten</th>
+      <th scope="col">Email</th>
+      <th scope="col">So dt</th>
+      <th scope="col">dia chi</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.msv}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.address}}</td>
+      <td>
+        <form action="/{{this._id}}?_method=DELETE" method="post">
+            <button class="btn btn-danger" type="submit">Xoa</button>
+        </form>
+
+        <form action="/{{this._id}}" method="get">
+            <button class="btn btn-primary" type="submit">Sua</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
